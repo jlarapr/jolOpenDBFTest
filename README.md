@@ -7,4 +7,4 @@
 # https://github.com/jlarapr/jolSQLite3
 # https://github.com/jlarapr/jolLibOpenDBF
 
-#Note: Run test in \Test\RunTest.cmd
+# Note: Run test in \Test\RunTest.cmd
