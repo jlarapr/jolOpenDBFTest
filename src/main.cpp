@@ -11,12 +11,12 @@ int main(int argc, const char **argv) {
 
     cout << "DBF TO SQL FILE TEST" << endl;
 
-    //argv[1] = "sample.dbf"; //input dbf
-    //argv[2] = "Create.sql"; //OutPutCreateFile
-    //argv[3] = "Insert.sql"; //OutPutInsertFile
-    //argv[4] = "CATNO"; //KeyColumnName
+    //argv[1] ="C:\\BASE DE DATO MMM 837P\\MMM837P2.DBF";   //"sample.dbf"; //input dbf
+    //argv[2] ="C:\\BASE DE DATO MMM 837P\\Create.sql";   //"Create.sql"; //OutPutCreateFile
+    //argv[3] ="C:\\BASE DE DATO MMM 837P\\Insert.sql";   //"Insert.sql"; //OutPutInsertFile
+    //argv[4] ="V0DOCUMENT";   //"CATNO"; //KeyColumnName
 
-    //argc = argc + 3;
+    argc = argc + 4;
 
     if(argc < 5)
     {
@@ -60,10 +60,9 @@ int main(int argc, const char **argv) {
         // clases a fin de obtener un buen performance.
         std::chrono::duration<std::chrono::system_clock::rep,std::chrono::system_clock::period> elapsed_seconds = end - start;
 
-
         std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-        std::chrono::duration<double> segundos = end-start;
+        //std::chrono::duration<double> segundos = end-start;
 
         std::cout << "\nProceso finalizado en "
                   << std::ctime(&end_time)
@@ -71,7 +70,7 @@ int main(int argc, const char **argv) {
                   << "s\n";
 
         cout << "Segundos empleados: " << instanteFinal - instanteInicial << endl;
-        cout << "Segundos empleados: " << segundos.count() << endl;
+        //cout << "Segundos empleados: " << segundos.count() << endl;
 
         start = std::chrono::system_clock::now();
         instanteInicial = time(nullptr);
@@ -86,14 +85,17 @@ int main(int argc, const char **argv) {
         ifs.close();
         ifstream ifsInsert(argv[3]);
         std::string insert;
+        getline(ifsInsert,insert,static_cast<char>(ifsInsert.eof()));
 
         DBLite sqldb("dbData.db");
         sqldb.createTable(create);
+        sqldb.insertData(insert.c_str());
 
-        while (ifsInsert) {
-            getline(ifsInsert,insert);
-            sqldb.insertData(insert.c_str());
-        }
+        //while (ifsInsert) {
+        //    getline(ifsInsert,insert);
+        //    sqldb.insertData(insert.c_str());
+        //}
+
         ifsInsert.close();
 
         sqldb.closeDB();
@@ -101,11 +103,11 @@ int main(int argc, const char **argv) {
         end = std::chrono::system_clock::now();
         instanteFinal = time(nullptr);
 
-        segundos = end - start;
+        //segundos = end - start;
 
         end_time = std::chrono::system_clock::to_time_t(end);
         cout << "Segundos empleados: " << instanteFinal - instanteInicial << endl;
-        cout << "Segundos empleados: " << segundos.count() << endl;
+        //cout << "Segundos empleados: " << segundos.count() << endl;
         std::cout << "\nProceso finalizado en " << std::ctime(&end_time) << endl;
 
     }

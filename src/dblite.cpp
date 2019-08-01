@@ -53,14 +53,27 @@ void DBLite::insertData(const char *ID, const char *name)
 
 void DBLite::insertData(const char *query)
 {
-    // Prepare the query
-    sqlite3_prepare(db, query, static_cast<int>(strlen(query)), &stmt, nullptr);
-    // Test it
-    rc = sqlite3_step(stmt);
-    // Finialize the usage
-    sqlite3_finalize(stmt);
-    // Free up the query space
-    //free(&query);
+    //// Prepare the query
+    //sqlite3_prepare(db, query, static_cast<int>(strlen(query)), &stmt, nullptr);
+    //// Test it
+    //rc = sqlite3_step(stmt);
+    //// Finialize the usage
+    //sqlite3_finalize(stmt);
+    //// Free up the query space
+    ////free(&query);
+
+    int rc = sqlite3_exec(db, query, callback, nullptr, &zErrMsg);
+
+    if (rc != SQLITE_OK) {
+        std::cerr << "Error Insert :" << zErrMsg<< std::endl;
+        checkDBErrors();
+    }
+    else
+        std::cout << "Records created Successfully!" << std::endl;
+
+    cout << "STATE OF TABLE AFTER INSERT" << endl;
+
+
 }
 
 void DBLite::showTable(string &tblName)
@@ -125,9 +138,8 @@ void DBLite::checkDBErrors()
     if( rc ){
         // Show an error message
         cout << "DB Error: " << sqlite3_errmsg(db) << endl;
-
+        sqlite3_free(zErrMsg);
         closeDB();
-
         exit(-1);
     }
 }
