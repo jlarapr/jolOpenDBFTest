@@ -52,7 +52,7 @@ SOURCES       = ..\src\dblite.cpp \
 OBJECTS       = release/.obj/dblite.o \
 		release/.obj/main.o
 
-DIST          =  src/asprintf.h \
+DIST          = README.md src/asprintf.h \
 		src/dblite.h ..\src\dblite.cpp \
 		..\src\main.cpp
 QMAKE_TARGET  = jolOpenDBFTest
