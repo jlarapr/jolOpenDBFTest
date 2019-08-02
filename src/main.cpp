@@ -15,7 +15,7 @@ int main(int argc, const char **argv) {
     //argv[2] ="C:\\BASE DE DATO MMM 837P\\Create.sql";   //"Create.sql"; //OutPutCreateFile
     //argv[3] ="C:\\BASE DE DATO MMM 837P\\Insert.sql";   //"Insert.sql"; //OutPutInsertFile
     //argv[4] ="V0DOCUMENT";   //"CATNO"; //KeyColumnName
-
+    //
     //argc = argc + 4;
 
     if(argc < 5)

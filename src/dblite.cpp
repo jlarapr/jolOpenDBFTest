@@ -62,7 +62,7 @@ void DBLite::insertData(const char *query)
     //// Free up the query space
     ////free(&query);
 
-    int rc = sqlite3_exec(db, query, callback, nullptr, &zErrMsg);
+    rc = sqlite3_exec(db, query, callback, nullptr, &zErrMsg);
 
     if (rc != SQLITE_OK) {
         std::cerr << "Error Insert :" << zErrMsg<< std::endl;
