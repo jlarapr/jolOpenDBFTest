@@ -19,7 +19,7 @@ CXXFLAGS      = -fno-keep-inline-dllexport -std=c++17 -O2 -std=gnu++1z -Wall -W 
 INCPATH       = -I..\..\jolOpenDBFTest -I. -I..\libs -I..\include -IC:\Qt\5.13.0\mingw73_64\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,console -mthreads
-LIBS        =        -LC:\Users\jlara\Source\QT\Projects\jolOpenDBFTest\libs -ljolLibOpenDBF1 -ljolSQLite33 release\.obj\jolOpenDBFTest_resource_res.o   
+LIBS        =        -LC:\Users\jlara\Source\QT\Projects\jolOpenDBFTest\libs C:\Users\jlara\Source\QT\Projects\jolOpenDBFTest\libs\libjolLibOpenDBF.a -ljolSQLite3 release\.obj\jolOpenDBFTest_resource_res.o   
 QMAKE         = C:\Qt\5.13.0\mingw73_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -65,7 +65,7 @@ DESTDIR_TARGET = release\.executable\jolOpenDBFTest.exe
 first: all
 all: release/Makefile.Release  release/.executable/jolOpenDBFTest.exe
 
-release/.executable/jolOpenDBFTest.exe: C:/Users/jlara/Source/QT/Projects/jolOpenDBFTest/libs/libjolLibOpenDBF1.a C:/Users/jlara/Source/QT/Projects/jolOpenDBFTest/libs/libjolSQLite33.a $(OBJECTS) release/.obj/jolOpenDBFTest_resource_res.o
+release/.executable/jolOpenDBFTest.exe: C:/Users/jlara/Source/QT/Projects/jolOpenDBFTest/libs/libjolLibOpenDBF.a C:/Users/jlara/Source/QT/Projects/jolOpenDBFTest/libs/libjolSQLite3.a $(OBJECTS) release/.obj/jolOpenDBFTest_resource_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 release/.obj/jolOpenDBFTest_resource_res.o: jolOpenDBFTest_resource.rc

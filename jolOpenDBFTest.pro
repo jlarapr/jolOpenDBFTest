@@ -49,8 +49,8 @@ QMAKE_MAKEFILE = $$DESTDIR/Makefile
 MAKEFILE = $$DESTDIR/$$MyMakefile
 TARGET = $$DEPLOY_TARGET
 
-win32: LIBS += -L$$PWD/libs/ -ljolLibOpenDBF1
-win32: LIBS += -L$$PWD/libs/ -ljolSQLite33
+win32: LIBS += -L$$PWD/libs/ -llibjolLibOpenDBF
+win32: LIBS += -L$$PWD/libs/ -ljolSQLite3
 
 INCLUDEPATH += $$PWD/libs
 DEPENDPATH += $$PWD/libs
@@ -58,11 +58,12 @@ DEPENDPATH += $$PWD/libs
 INCLUDEPATH += $$PWD/include
 DEPENDPATH += $$PWD/include
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/jolLibOpenDBF1.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libjolLibOpenDBF1.a
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/jolSQLite33.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libjolSQLite33.a
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/libjolLibOpenDBF.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libjolLibOpenDBF.a
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/libs/jolSQLite3.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/libs/libjolSQLite3.a
 
 # MYFILE = $$OUT_PWD/$$DESTDIR/".executable"/$$TARGET
 # DEPLOY_COMMAND = windeployqt --qmldir $$PWD
@@ -78,3 +79,7 @@ HEADERS += \
 
 DISTFILES += \
     README.md
+
+
+
+

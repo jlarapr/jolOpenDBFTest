@@ -11,11 +11,11 @@ int main(int argc, const char **argv) {
 
     cout << "DBF TO SQL FILE TEST" << endl;
 
-    //argv[1] ="C:\\BASE DE DATO MMM 837P\\MMM837P2.DBF";   //"sample.dbf"; //input dbf
-    //argv[2] ="C:\\BASE DE DATO MMM 837P\\Create.sql";   //"Create.sql"; //OutPutCreateFile
-    //argv[3] ="C:\\BASE DE DATO MMM 837P\\Insert.sql";   //"Insert.sql"; //OutPutInsertFile
-    //argv[4] ="V0DOCUMENT";   //"CATNO"; //KeyColumnName
-    //
+    //argv[1] ="sample.dbf"; //input dbf        "C:\\BASE DE DATO MMM 837P\\MMM837P2.DBF";
+    //argv[2] ="Create.sql"; //OutPutCreateFile "C:\\BASE DE DATO MMM 837P\\Create.sql";
+    //argv[3] ="Insert.sql"; //OutPutInsertFile "C:\\BASE DE DATO MMM 837P\\Insert.sql";
+    //argv[4] = "CATNO";      //KeyColumnName          "V0DOCUMENT";
+
     //argc = argc + 4;
 
     if(argc < 5)
@@ -38,6 +38,7 @@ int main(int argc, const char **argv) {
         instanteInicial = time(nullptr);
 
         DbfFile_c file(argv[1]);
+
 
         file.tblName("tblData");
 
